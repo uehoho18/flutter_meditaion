@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_meditaion/di/providers.dart';
 import 'package:flutter_meditaion/generated/l10n.dart';
-import 'package:flutter_meditaion/view/home_screen.dart';
+import 'package:flutter_meditaion/view/screens/home/home_screen.dart';
+import 'package:flutter_meditaion/view/screens/home/intro/intro_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData.dark(),
-      home: const HomeScreen(),
+      home: const IntroScreen(),
     );
   }
 }
