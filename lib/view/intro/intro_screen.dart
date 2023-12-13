@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meditaion/generated/l10n.dart';
-import 'package:flutter_meditaion/view/screens/home/home_screen.dart';
+import 'package:flutter_meditaion/view/common/show_modal_dialog.dart';
+import 'package:flutter_meditaion/view/home/home_screen.dart';
+import 'package:flutter_meditaion/view/intro/components/skip_intro_dialog.dart';
 import 'package:intro_slider/intro_slider.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -11,6 +13,12 @@ class IntroScreen extends StatelessWidget {
     return IntroSlider(
       listContentConfig: _createSliders(context),
       onDonePress: () => _openHomeScreen(context),
+      onSkipPress: () => showModalDialog(
+          context: context,
+          dialogWidget: SkipIntroDialog(
+            onSkipped: () => _skipIntro(context),
+          ),
+          isSccrollable: false),
     );
   }
 
@@ -50,5 +58,9 @@ class IntroScreen extends StatelessWidget {
         MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         ));
+  }
+
+  _skipIntro(BuildContext context) {
+    print("_skipIntro");
   }
 }
