@@ -63,7 +63,6 @@ class IntroScreen extends StatelessWidget {
   }
 
   _skipIntro(BuildContext context) async {
-    print("_skipIntro");
     final viewModel = context.read<MainViewModel>();
     await viewModel.skipIntro();
     _openHomeScreen(context);
