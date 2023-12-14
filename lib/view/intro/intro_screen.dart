@@ -3,7 +3,9 @@ import 'package:flutter_meditaion/generated/l10n.dart';
 import 'package:flutter_meditaion/view/common/show_modal_dialog.dart';
 import 'package:flutter_meditaion/view/home/home_screen.dart';
 import 'package:flutter_meditaion/view/intro/components/skip_intro_dialog.dart';
+import 'package:flutter_meditaion/view_models/main_view_model.dart';
 import 'package:intro_slider/intro_slider.dart';
+import 'package:provider/provider.dart';
 
 class IntroScreen extends StatelessWidget {
   const IntroScreen({super.key});
@@ -60,7 +62,10 @@ class IntroScreen extends StatelessWidget {
         ));
   }
 
-  _skipIntro(BuildContext context) {
+  _skipIntro(BuildContext context) async {
     print("_skipIntro");
+    final viewModel = context.read<MainViewModel>();
+    await viewModel.skipIntro();
+    _openHomeScreen(context);
   }
 }
