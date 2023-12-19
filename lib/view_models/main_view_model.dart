@@ -22,4 +22,8 @@ class MainViewModel extends ChangeNotifier {
       await sharedPrefsRepository.skipIntro();
     }
   }
+
+  Future<bool> isSkipIntroScreen() async {
+    return await sharedPrefsRepository.isSkipIntroScreen();
+  }
 }

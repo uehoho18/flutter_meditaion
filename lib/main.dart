@@ -4,6 +4,7 @@ import 'package:flutter_meditaion/di/providers.dart';
 import 'package:flutter_meditaion/generated/l10n.dart';
 import 'package:flutter_meditaion/view/home/home_screen.dart';
 import 'package:flutter_meditaion/view/intro/intro_screen.dart';
+import 'package:flutter_meditaion/view_models/main_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<MainViewModel>(context, listen: false);
     return MaterialApp(
       title: "Meditation",
       localizationsDelegates: const [
@@ -26,7 +28,15 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData.dark(),
-      home: const IntroScreen(),
+      home: FutureBuilder(
+          future: viewModel.isSkipIntroScreen(),
+          builder: (context, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.hasData && snapshot.data == true) {
+              return HomeScreen();
+            } else {
+              return IntroScreen();
+            }
+          }),
     );
   }
 }
