@@ -10,14 +10,14 @@ const int THEME_ID_BONFIRE = 7;
 class MeisoTheme {
   final int themeId;
   final String themeName;
-  final String ImagePath;
+  final String imagePath;
   final String soundPath;
 
 //<editor-fold desc="Data Methods">
   const MeisoTheme({
     required this.themeId,
     required this.themeName,
-    required this.ImagePath,
+    required this.imagePath,
     required this.soundPath,
   });
 
@@ -28,14 +28,14 @@ class MeisoTheme {
           runtimeType == other.runtimeType &&
           themeId == other.themeId &&
           themeName == other.themeName &&
-          ImagePath == other.ImagePath &&
+          imagePath == other.imagePath &&
           soundPath == other.soundPath);
 
   @override
   int get hashCode =>
       themeId.hashCode ^
       themeName.hashCode ^
-      ImagePath.hashCode ^
+      imagePath.hashCode ^
       soundPath.hashCode;
 
   @override
@@ -43,7 +43,7 @@ class MeisoTheme {
     return 'MeisoTheme{' +
         ' themeId: $themeId,' +
         ' themeName: $themeName,' +
-        ' ImagePath: $ImagePath,' +
+        ' ImagePath: $imagePath,' +
         ' soundPath: $soundPath,' +
         '}';
   }
@@ -57,7 +57,7 @@ class MeisoTheme {
     return MeisoTheme(
       themeId: themeId ?? this.themeId,
       themeName: themeName ?? this.themeName,
-      ImagePath: ImagePath ?? this.ImagePath,
+      imagePath: ImagePath ?? this.imagePath,
       soundPath: soundPath ?? this.soundPath,
     );
   }
@@ -66,7 +66,7 @@ class MeisoTheme {
     return {
       'themeId': this.themeId,
       'themeName': this.themeName,
-      'ImagePath': this.ImagePath,
+      'ImagePath': this.imagePath,
       'soundPath': this.soundPath,
     };
   }
@@ -75,7 +75,7 @@ class MeisoTheme {
     return MeisoTheme(
       themeId: map['themeId'] as int,
       themeName: map['themeName'] as String,
-      ImagePath: map['ImagePath'] as String,
+      imagePath: map['ImagePath'] as String,
       soundPath: map['soundPath'] as String,
     );
   }
