@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meditaion/data_models/user_settings.dart';
 import 'package:flutter_meditaion/generated/models/managers/ad_manager.dart';
 import 'package:flutter_meditaion/generated/models/managers/in_app_purchase_manager.dart';
 import 'package:flutter_meditaion/generated/models/managers/sound_manager.dart';
@@ -17,6 +18,8 @@ class MainViewModel extends ChangeNotifier {
   final AdManager adManager;
   final InAppPurchaseManager inAppPurchaseManager;
 
+  UserSettings? userSettings;
+
   skipIntro() {
     Future<void> skipIntro() async {
       await sharedPrefsRepository.skipIntro();
@@ -25,5 +28,9 @@ class MainViewModel extends ChangeNotifier {
 
   Future<bool> isSkipIntroScreen() async {
     return await sharedPrefsRepository.isSkipIntroScreen();
+  }
+
+  Future<void> getUserSettings() async {
+    await sharedPrefsRepository.getUserSettings();
   }
 }

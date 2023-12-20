@@ -3,6 +3,8 @@ import 'package:flutter_meditaion/data_models/level.dart';
 import 'package:flutter_meditaion/data_models/meiso_theme.dart';
 import 'package:flutter_meditaion/data_models/meiso_time.dart';
 import 'package:flutter_meditaion/generated/l10n.dart';
+import 'package:flutter_meditaion/view_models/main_view_model.dart';
+import 'package:provider/provider.dart';
 
 List<Level> levels = [];
 List<MeisoTheme> meisoThemes = [];
@@ -16,6 +18,13 @@ class HomeScreen extends StatelessWidget {
     setLevels(context);
     setMeisoThemes(context);
     setMeisoTimes(context);
+
+    final viewModel = context.read<MainViewModel>();
+    // final viewModel = context. <MainViewModel>();
+
+    Future(() {
+      viewModel.getUserSettings();
+    });
 
     return Scaffold(
       body: Container(
