@@ -4,6 +4,7 @@ import 'package:flutter_meditaion/generated/models/managers/ad_manager.dart';
 import 'package:flutter_meditaion/generated/models/managers/in_app_purchase_manager.dart';
 import 'package:flutter_meditaion/generated/models/managers/sound_manager.dart';
 import 'package:flutter_meditaion/generated/models/repositories/shared_prefs_repository.dart';
+import 'package:flutter_meditaion/utils/functions.dart';
 
 class MainViewModel extends ChangeNotifier {
   MainViewModel({
@@ -20,6 +21,9 @@ class MainViewModel extends ChangeNotifier {
 
   UserSettings? userSettings;
 
+  int remainingTimeSeconds = 0;
+  String get remainingTimeString => convertTimeFormat(remainingTimeSeconds);
+
   skipIntro() {
     Future<void> skipIntro() async {
       await sharedPrefsRepository.skipIntro();
@@ -31,6 +35,8 @@ class MainViewModel extends ChangeNotifier {
   }
 
   Future<void> getUserSettings() async {
-    await sharedPrefsRepository.getUserSettings();
+    userSettings = await sharedPrefsRepository.getUserSettings();
+    remainingTimeSeconds = userSettings!.timeMinuets * 60;
+    notifyListeners();
   }
 }
