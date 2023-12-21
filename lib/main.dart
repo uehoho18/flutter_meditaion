@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder(
           future: viewModel.isSkipIntroScreen(),
           builder: (context, AsyncSnapshot<bool> snapshot) {
+            print("snapshot.hasData: ${snapshot.hasData}");
             if (snapshot.hasData && snapshot.data == true) {
               return HomeScreen();
             } else {
