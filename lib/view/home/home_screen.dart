@@ -3,6 +3,12 @@ import 'package:flutter_meditaion/data_models/level.dart';
 import 'package:flutter_meditaion/data_models/meiso_theme.dart';
 import 'package:flutter_meditaion/data_models/meiso_time.dart';
 import 'package:flutter_meditaion/generated/l10n.dart';
+import 'package:flutter_meditaion/view/home/components/decoated_background.dart';
+import 'package:flutter_meditaion/view/home/components/header_part.dart';
+import 'package:flutter_meditaion/view/home/components/play_buttons_part.dart';
+import 'package:flutter_meditaion/view/home/components/speed_dial_part.dart';
+import 'package:flutter_meditaion/view/home/components/status_display_part.dart';
+import 'package:flutter_meditaion/view/home/components/volume_slider_part.dart';
 import 'package:flutter_meditaion/view_models/main_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -26,11 +32,20 @@ class HomeScreen extends StatelessWidget {
       viewModel.getUserSettings();
     });
 
-    return Scaffold(
-      body: Container(
-        child: Center(
-          child: Text(S.of(context).introTitle1),
-        ),
+    return const Scaffold(
+      floatingActionButton: SpeedDialPart(),
+      body: Stack(
+        children: [
+          DecoratedBackgound(),
+          Column(
+            children: [
+              HeaderPart(),
+              StatusSidPlay(),
+              PlayButtonsPart(),
+              VolimeSliderPart(),
+            ],
+          )
+        ],
       ),
     );
   }

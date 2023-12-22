@@ -36,7 +36,7 @@ class MainViewModel extends ChangeNotifier {
 
   Future<void> getUserSettings() async {
     userSettings = await sharedPrefsRepository.getUserSettings();
-    remainingTimeSeconds = userSettings!.timeMinuets * 60;
+    remainingTimeSeconds = userSettings!.timeMinutes * 60;
     notifyListeners();
   }
 }
